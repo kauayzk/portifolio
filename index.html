@@ -33,6 +33,43 @@
     .preloader-line::after{content:'';position:absolute;inset:0;background:var(--wh);animation:pB 2.2s var(--ease) forwards;transform-origin:left}
     @keyframes pB{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
+    /* SVG LOGO PRELOADER */
+    .preloader-logo{width:120px;height:144px;margin-bottom:20px}
+    .preloader-logo path{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:drawPath 2s var(--ease) forwards}
+    .preloader-logo path:nth-child(1){--len:120;animation-delay:0s}
+    .preloader-logo path:nth-child(2){--len:85;animation-delay:.2s}
+    .preloader-logo path:nth-child(3){--len:85;animation-delay:.25s}
+    .preloader-logo path:nth-child(4){--len:120;animation-delay:.35s}
+    .preloader-logo path:nth-child(5){--len:195;animation-delay:.45s}
+    .preloader-logo path:nth-child(6){--len:80;animation-delay:.55s}
+    @keyframes drawPath{to{stroke-dashoffset:0}}
+
+    /* HERO LOGO BACKGROUND */
+    .hero-logo-bg{position:absolute;width:clamp(300px,50vw,600px);height:auto;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.03;pointer-events:none;z-index:0;will-change:transform;transition:opacity .5s}
+    .hero-logo-bg path{fill:#fff}
+
+    /* SECTION WATERMARK */
+    .section-wm{position:absolute;right:-5%;top:50%;transform:translateY(-50%);width:200px;height:auto;opacity:.015;pointer-events:none;z-index:0}
+    .section-wm path{fill:#fff}
+    .section-wm.left{right:auto;left:-5%}
+
+    /* FOOTER LOGO */
+    .footer-logo{width:40px;height:auto;opacity:.7;transition:opacity .5s var(--ease)}
+    .footer-logo:hover{opacity:1}
+    .footer-logo path{fill:var(--wh)}
+
+    /* NAV LOGO SVG */
+    .nav-logo-svg{width:22px;height:auto;margin-right:6px;flex-shrink:0}
+    .nav-logo-svg path{fill:var(--wh);transition:fill .3s}
+
+    /* ORBIT CENTER LOGO */
+    .orbit-logo{width:40px;height:auto;opacity:.25}
+    .orbit-logo path{fill:var(--wh)}
+
+    /* CTA LOGO */
+    .cta-logo{width:60px;height:auto;opacity:.06;margin:0 auto 28px}
+    .cta-logo path{fill:#fff}
+
     /* SCROLL PROGRESS */
     .scroll-progress{position:fixed;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,rgba(255,255,255,.2),#fff);z-index:10001}
 
@@ -385,7 +422,7 @@
   </style>
 </head>
 <body class="loading">
-  <div class="preloader" id="preloader"><img src="./logo.png" alt="KR Logo" style="width:64px;height:64px;border-radius:50%;opacity:0;animation:fu 1s var(--ease) forwards;margin-bottom:-10px;"><div class="preloader-name" id="pText"></div><div class="preloader-line"></div></div>
+  <div class="preloader" id="preloader"><svg class="preloader-logo" viewBox="0 0 100 120"><path d="M 6 0 L 6 120"/><path d="M 6 60 L 46 0"/><path d="M 6 60 L 46 120"/><path d="M 54 0 L 54 120"/><path d="M 54 0 L 94 0 L 94 50 L 54 62"/><path d="M 54 62 L 94 120"/></svg><div class="preloader-name" id="pText"></div><div class="preloader-line"></div></div>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursorDot"></div>
@@ -417,7 +454,7 @@
   <nav id="nav">
     <div class="nav-inner">
       <div style="display:flex;align-items:center;gap:16px">
-        <a href="#hero" class="nav-logo magnetic" id="navLogo"><img src="./logo.png" alt="KR Logo" style="width:28px;height:28px;border-radius:50%;margin-right:8px;">KR <span>/ dev</span></a>
+        <a href="#hero" class="nav-logo magnetic" id="navLogo"><svg class="nav-logo-svg" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg>KR <span>/ dev</span></a>
         <div class="avail-badge"><span class="avail-dot"></span>Dispon&#237;vel</div>
       </div>
       <ul class="nav-links" id="navLinks">
@@ -437,6 +474,7 @@
     <div class="hero-grid"></div>
     <canvas id="particles-canvas"></canvas>
     <div class="hero-glow" id="heroGlow"></div>
+    <svg class="hero-logo-bg" id="heroLogoBg" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg>
     <div class="hero-content">
       <p class="hero-greeting" id="heroGreeting"></p>
       <span class="hero-label">Desenvolvimento de Software &amp; Tecnologia</span>
@@ -459,7 +497,7 @@
   <div class="hz-section"><div class="hz-track" id="hzTrack"><span class="hz-text">Web</span><span class="hz-text lit">Development</span><span class="hz-text">Mobile</span><span class="hz-text lit">Systems</span><span class="hz-text">Artificial Intelligence</span><span class="hz-text lit">Automation</span><span class="hz-text">UI/UX</span><span class="hz-text lit">Branding</span><span class="hz-text">Full-Stack</span><span class="hz-text lit">SaaS</span><span class="hz-text">Web</span><span class="hz-text lit">Development</span><span class="hz-text">Mobile</span><span class="hz-text lit">Systems</span><span class="hz-text">Artificial Intelligence</span><span class="hz-text lit">Automation</span><span class="hz-text">UI/UX</span><span class="hz-text lit">Branding</span><span class="hz-text">Full-Stack</span><span class="hz-text lit">SaaS</span></div></div>
 
   <!-- SOBRE -->
-  <section id="sobre">
+  <section id="sobre" style="position:relative;overflow:hidden"><svg class="section-wm" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg>
     <div class="container">
       <div class="sh sa"><span class="sh-label">01 / Sobre</span><h2 class="sh-title" data-words>Cada projeto tem uma hist&#243;ria. Eu ajudo a construir a sua.</h2></div>
       <div class="about-grid">
@@ -532,7 +570,7 @@
         <div class="orbit-ring"></div>
         <div class="orbit-ring"></div>
         <div class="orbit-ring"></div>
-        <div class="orbit-center"><div class="orbit-center-text">Stack</div></div>
+        <div class="orbit-center"><svg class="orbit-logo" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg></div>
       </div>
       <div class="sk-cats">
         <div class="sk-cat sa"><span class="sk-lbl">Linguagens e Frameworks</span><div class="sk-tags"><span class="sk-tag">JavaScript</span><span class="sk-tag">TypeScript</span><span class="sk-tag">React</span><span class="sk-tag">Next.js</span><span class="sk-tag">Node.js</span><span class="sk-tag">Express</span><span class="sk-tag">Java</span><span class="sk-tag">Python</span><span class="sk-tag">Tailwind CSS</span></div></div>
@@ -545,7 +583,7 @@
   <div class="divider"></div>
 
   <!-- PROJETOS -->
-  <section id="projetos">
+  <section id="projetos" style="position:relative;overflow:hidden"><svg class="section-wm left" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg>
     <div class="container">
       <div class="sh sa"><span class="sh-label">04 / Projetos</span><h2 class="sh-title" data-words>Cada projeto &#233; uma solu&#231;&#227;o real para um problema real.</h2><p class="sh-desc">Clique em um projeto para ver os detalhes.</p></div>
       <div class="projects-list">
@@ -650,12 +688,13 @@
 
   <!-- CTA -->
   <section class="cta-section"><div class="cta-bg"></div><div class="container">
+    <svg class="cta-logo sa" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg>
     <h2 class="sa">Pronto para transformar sua ideia em tecnologia?</h2>
     <p class="sa">A pr&#243;xima grande solu&#231;&#227;o come&#231;a com uma conversa.</p>
     <a href="https://wa.me/5511977147610" class="cta-btn magnetic sa" target="_blank" rel="noopener">Iniciar conversa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
   </div></section>
 
-  <footer><div class="footer-glow"></div><div class="fi"><div style="display:flex;align-items:center;gap:12px;"><img src="./logo.png" alt="KR Logo" style="width:36px;height:36px;border-radius:50%;opacity:0.8;"><div class="fb"><strong>Kau&#227; Rocha</strong> / Desenvolvedor</div></div><div class="fn">Web &#183; Mobile &#183; Sistemas &#183; IA</div></div></footer>
+  <footer><div class="footer-glow"></div><div class="fi"><div style="display:flex;align-items:center;gap:14px"><svg class="footer-logo" viewBox="0 0 100 120"><path d="M 0 0 L 12 0 L 12 120 L 0 120 Z"/><path d="M 12 54 L 40 0 L 52 0 L 12 66 Z"/><path d="M 12 54 L 52 120 L 40 120 L 12 66 Z"/><path d="M 48 0 L 60 0 L 60 120 L 48 120 Z"/><path d="M 60 0 L 100 0 L 100 50 L 60 62 Z"/><path d="M 60 58 L 74 58 L 100 120 L 86 120 Z"/></svg><div class="fb"><strong>Kau&#227; Rocha</strong> / Desenvolvedor</div></div><div class="fn">Web &#183; Mobile &#183; Sistemas &#183; IA</div></div></footer>
 
 <script>
 const isMobile='ontouchstart'in window||navigator.maxTouchPoints>0;
@@ -718,6 +757,36 @@ const isMobile='ontouchstart'in window||navigator.maxTouchPoints>0;
 
 /* HERO GLOW */
 (()=>{if(isMobile)return;const g=document.getElementById('heroGlow'),h=document.querySelector('.hero');h.addEventListener('mousemove',e=>{const r=h.getBoundingClientRect();g.style.left=(e.clientX-r.left)+'px';g.style.top=(e.clientY-r.top)+'px';g.style.transform='translate(-50%,-50%)'})})();
+
+/* HERO LOGO PARALLAX + SCROLL */
+(()=>{
+  const logo=document.getElementById('heroLogoBg');
+  if(!logo)return;
+  // Mouse parallax on hero
+  if(!isMobile){
+    document.querySelector('.hero').addEventListener('mousemove',e=>{
+      const r=document.querySelector('.hero').getBoundingClientRect();
+      const mx=((e.clientX-r.left)/r.width-.5)*2;
+      const my=((e.clientY-r.top)/r.height-.5)*2;
+      logo.style.transform=`translate(calc(-50% + ${mx*20}px), calc(-50% + ${my*20}px)) rotate(${mx*2}deg) scale(1.02)`;
+    });
+    document.querySelector('.hero').addEventListener('mouseleave',()=>{
+      logo.style.transform='translate(-50%,-50%) rotate(0deg) scale(1)';
+    });
+  }
+  // Scroll-linked scale + opacity
+  function scrollAnim(){
+    const y=window.scrollY;
+    const vh=window.innerHeight;
+    const p=Math.min(y/vh,1);
+    const s=1+p*0.3;
+    const o=.03*(1-p*.8);
+    logo.style.opacity=o;
+    if(isMobile) logo.style.transform=`translate(-50%,-50%) scale(${s})`;
+    requestAnimationFrame(scrollAnim);
+  }
+  scrollAnim();
+})();
 
 /* AMBIENT ORBS PARALLAX */
 (()=>{const orbs=document.querySelectorAll('.ambient-orb');function u(){const y=window.scrollY,max=document.documentElement.scrollHeight-window.innerHeight,p=max>0?y/max:0;if(orbs[0])orbs[0].style.transform=`translate(${p*100}px,${p*200}px)`;if(orbs[1])orbs[1].style.transform=`translate(${-p*80}px,${-p*150}px)`;if(orbs[2])orbs[2].style.transform=`translate(${p*60-30}px,${Math.sin(p*Math.PI*2)*100}px)`;requestAnimationFrame(u)}u()})();
